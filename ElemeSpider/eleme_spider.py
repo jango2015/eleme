@@ -1,8 +1,7 @@
 import os
 from common import get_content_by_url
-from mongoservice import Insert
-# from Geohash import geohash
-import Geohash
+from mongoservice import Insert,get_by_pinyin,get_all
+import geohash
 eleme_cities ='https://mainsite-restapi.ele.me/shopping/v1/cities'
 
 restaurant_category ='https://mainsite-restapi.ele.me/shopping/v2/restaurant/category?latitude=31.21551&longitude=121.44695' #by gps
@@ -18,10 +17,7 @@ def get_cities():
    data =content.decode("utf8","ignore")
    obj =eval(data)
    print(sorted(obj.keys()))
-   f = open(filepath, 'a')
-   s = str(obj)
-   f.write(s)
-   f.close()
+
    for item in sorted(obj.keys()):
        cities =[]
        key = item
@@ -40,13 +36,37 @@ def get_cities():
            eleme_city.name = city["name"]
            eleme_city.pinyin = city["pinyin"]
            # eleme_city.geohash =geohash.encode(eleme_city.latitude,eleme_city.longitude,precision=12)
-           eleme_city.geohash =Geohash .encode(eleme_city.latitude,eleme_city.longitude)
+           eleme_city.geohash = geohash.encode(eleme_city.latitude,eleme_city.longitude,12)
            print("\n")
            v= eleme_city.__dict__
            print(v)
            cities.append(v)
+       f = open(filepath, 'a')
+       s = str(cities)
+       f.write(s)
+       f.close()
+       print(cities)
        Insert(cities, "Spider_Eleme_Cities_WithGeoHash")
 
+def get_geohash(city_pinyin="shanghai"):
+    item =get_by_pinyin('shanghai',"Spider_Eleme_Cities_WithGeoHash")
+    # print(item)
+    geohash_str = item["geohash"]
+    print(geohash_str)
+    return geohash_str
+    # cities = get_all()
+    # x =[]
+    # for city in cities:
+    #     x.append(city["geohash"])
+    # print(x)
+    # i = cities.count()
+    # print(i)
+
+def get_pois_nearby(keyword,geohash,limitednum=30):
+    get_poi_url = "https://mainsite-restapi.ele.me/v2/pois?extras%5B%5D=count&geohash="+geohash+"&keyword="+keyword+"&limit="+str(limitednum)+"&type=nearby"
+    print(get_poi_url)
+    pois_contens = get_content_by_url(get_poi_url)
+    print(pois_contens)
 
 
 class ElemeCities_Item:
@@ -57,8 +77,10 @@ class ElemeCities_Item:
     longitude =''
     name =''
     pinyin = ''
-    geohash =''
+    geohash = ''
 
 
 if __name__ == '__main__':
-    get_cities()
+    # get_cities()
+    geohash_str =get_geohash()
+    get_pois_nearby("世纪大道",geohash_str)
