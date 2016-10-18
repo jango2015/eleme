@@ -1,4 +1,5 @@
 from urllib.request import Request,urlopen
+import urllib.parse
 def get_content_by_url(url):
     req = Request(url)
     resp = urlopen(req)
@@ -7,11 +8,17 @@ def get_content_by_url(url):
     return content
 
 def get_content(url):
-    req = Request(url)
+    values = {'wd': 'python',
+              'opt-webpage': 'on',
+              'ie': 'gbk'}
+    url_values = urllib.parse.urlencode(values)
+    url_values = url_values.encode(encoding='UTF8')
+    req = urllib.request.Request(url, url_values)
+    # req = Request(url)
     resp = urlopen(req)
     content = resp.read()
     print(content)
-    return content
+    # return content
 def class_to_dict(obj):
     '''把对象(支持单个对象、list、set)转换成字典'''
     is_list = obj.__class__ == [].__class__

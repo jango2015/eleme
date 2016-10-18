@@ -1,5 +1,5 @@
 import os
-from common import get_content_by_url
+from common import get_content_by_url,get_content
 from mongoservice import Insert,get_by_pinyin,get_all
 import geohash
 eleme_cities ='https://mainsite-restapi.ele.me/shopping/v1/cities'
@@ -65,8 +65,9 @@ def get_geohash(city_pinyin="shanghai"):
 def get_pois_nearby(keyword,geohash,limitednum=30):
     get_poi_url = "https://mainsite-restapi.ele.me/v2/pois?extras%5B%5D=count&geohash="+geohash+"&keyword="+keyword+"&limit="+str(limitednum)+"&type=nearby"
     print(get_poi_url)
-    pois_contens = get_content_by_url(get_poi_url)
-    print(pois_contens)
+    get_content(get_poi_url)
+    # pois_contens = get_content(get_poi_url)
+    # print(pois_contens)
 
 
 class ElemeCities_Item:
