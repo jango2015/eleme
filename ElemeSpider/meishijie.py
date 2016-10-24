@@ -8,7 +8,7 @@ s_pinyin = PinYin()
 s_pinyin.load_word()
 
 '''获取 理疗分类'''
-def get_meishijie_categories(cid = _cid):
+def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
     url=base_url+str(cid)
     html =get_html_by_url(url)
     # print(html)
@@ -41,26 +41,30 @@ def get_meishijie_categories(cid = _cid):
         meishijie_shiliao_fenlei = meishijie_shiliao_parant_category()
         meishijie_shiliao_fenlei.cid =_cid +index
         index+=1
-        if cid == 160 :
-            meishijie_shiliao_fenlei.category_pinyin="jibingtiaoli"
-            meishijie_shiliao_fenlei.category_cn='疾病调理'
+        # if cid == 160 :
+        #     meishijie_shiliao_fenlei.category_pinyin="jibingtiaoli"
+        #     meishijie_shiliao_fenlei.category_cn='疾病调理'
         # elif cid== 190:
         #     meishijie_shiliao_fenlei.category_pinyin="jibingtiaoli"
         #     meishijie_shiliao_fenlei.category_cn='疾病调理'
+        meishijie_shiliao_fenlei.category_pinyin=category_pinyin
+        meishijie_shiliao_fenlei.category_cn=category_cn
         meishijie_shiliao_fenlei.cnName=dd.string
         meishijie_shiliao_fenlei.pinyin = l0
         meishijie_shiliao_fenlei.url = dd["href"]
 
         class_meishijie_shiliao_fenlei = meishijie_shiliao_fenlei.__dict__
         meishijie_shiliao_Categories.append(class_meishijie_shiliao_fenlei)
-    '''获取该分类食材 start
-    '''
+    Insert(meishijie_shiliao_Categories,collectionName='Meishijie_shiliao_Categories')
+
+    '''获取该分类食材 start '''
     get_meishijie_shiliao_shicai_yi(cid,meishijie_shiliao_fenlei.category_pinyin) #适宜食材
     get_meishijie_shiliao_shicai_ji(cid,meishijie_shiliao_fenlei.category_pinyin) #禁忌食材
-    '''
-    获取该分类食材 end
-    '''
-    Insert(meishijie_shiliao_Categories,collectionName='Meishijie_shiliao_Categories')
+    '''获取该分类食材 end'''
+    for st in dish_types_st:
+        # print(st)
+        # print(dish_types_st.get(st))
+        get_dish_menus(cid,page_num=1,cai_menu_types_st=dish_types_st.get(st),category_pinyin=meishijie_shiliao_fenlei.category_cn)
 
 
     # dls = sop.findAll("dl",attrs={'class':"listnav_dl_style1"})
@@ -124,8 +128,8 @@ def get_meishijie_shiliao_shicai_yi(cid = _cid,category_pinyin=""):
                         shiliao_shicais.append(class_shiliao_shicai)
                     # img = shicai_li.find_all("img")
                     # print(img)
-
-    Insert(shiliao_shicais,"Meishijie_shiliao_shicais")
+    if (len(shiliao_shicais)>0):
+        Insert(shiliao_shicais,"Meishijie_shiliao_shicais")
 '''
 适宜食材 end
  '''
@@ -184,7 +188,8 @@ def get_meishijie_shiliao_shicai_ji(cid = _cid,category_pinyin=""):
                     # img = shicai_li.find_all("img")
                     # print(img)
 
-    Insert(shiliao_shicais, "Meishijie_shiliao_shicais")
+    if (len(shiliao_shicais)>0):
+        Insert(shiliao_shicais, "Meishijie_shiliao_shicais")
 '''禁忌食材 end'''
 
 '''
@@ -220,16 +225,26 @@ class meishijiie_shiliao_shicai:
     type_name =''
 
 '''菜谱、中医保健、养生妙方'''
-class meishijie_shiliao_cai_menu:
+class meishijie_shiliao_dish_menu:
     cid = ''
-    category_pinyin = ''
+    dish_type =''
+    dish_type_st=''
+    dish_cn='' #菜名
+    dish_pinyin='' #菜名 拼音
+    link_url =''
+    img_url=''
+    cooking_remark ='' #烹饪 步骤数 /烹饪 时长
+    page_num=0
+
 
 
 '''获取 菜谱、中医保健、养生妙方'''
-cai_menu_types ={"caipu":"菜谱","zhongyibaojian":"中医保健","yangshengmiaofang":"养生妙方"}
-cai_menu_types_st ={"caipu":"3","zhongyibaojian":"1","yangshengmiaofang":"2"}
-def get_cai_menus(cid=_cid,page_num=1,cai_menu_types_st="3"):
-     url = base_url+str(cid)+"&sortby=update&st="+cai_menu_types_st
+dish_types ={"3":"菜谱","1":"中医保健","2":"养生妙方"}
+dish_types_st ={"caipu":"3","zhongyibaojian":"1","yangshengmiaofang":"2"}
+def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin=''):
+     # print(dish_types[cai_menu_types_st])
+     # return
+     url = base_url+str(cid)+"&sortby=update&st="+cai_menu_types_st+"&page="+str(page_num)
      html = get_html_by_url(url)
      soup = BeautifulSoup(html)
 
@@ -240,19 +255,110 @@ def get_cai_menus(cid=_cid,page_num=1,cai_menu_types_st="3"):
          # print(page_text)
          # print(len(page_text))
          total_page = int(page_text)
-         print(total_page)
+         # print(total_page)
          # print(type(total_page_num))
+     cai_menu_lists = soup.select(".listtyle1_list .listtyle1 a")
 
-     cai_menu_lists = soup.select(".listtyle1_list .listtyle1")
+     dish_menu_list =[]
      for cai_menu_list in cai_menu_lists:
-         print((cai_menu_list))
+         # print(cai_menu_list)
+         dish_menu = meishijie_shiliao_dish_menu()
+         dish_menu.link_url =cai_menu_list["href"]
+         dish_menu.cid = cid
+         dish_menu.dish_types_st = cai_menu_types_st
+         dish_menu.dish_type =category_pinyin+dish_types.get(cai_menu_types_st)
+         dish_menu.dish_cn = cai_menu_list["title"]
+         img =cai_menu_list.find("img")
+         dish_menu.img_url =img["src"]
+         remarks = cai_menu_list.select(".c2 li")
+         print(remarks)
+         for remark in remarks :
+             # print(remark.string)
+             dish_menu.cooking_remark+=remark.string +" \r\n"
+         try:
+             d = s_pinyin.hanzi2pinyin_split(string=dish_menu.dish_cn, split=' ')
+             l0 = d.replace(' ', '')
+             dish_menu.dish_pinyin = l0
+         except:
+             import traceback
+             # traceback.print_exc()
+         dish_menu.page_num = page_num
+         dish_menu_item = dish_menu.__dict__
+         dish_menu_list.append(dish_menu_item)
+     print(dish_menu_list)
+     if (len(dish_menu_list) > 0):
+        Insert(dish_menu_list,"Mershijie_shiliao_dishmenus")
+     page = page_num+1
+     while (page <=total_page):
+        print(page)
+        get_dish_menus(cid,page_num=page)
+        break
+
+
+def get_pinyin(str_cn):
+    d = s_pinyin.hanzi2pinyin_split(str_cn,split=' ')
+    l0 = d.replace(' ','')
+    return  l0
+
+
+
+def get_categiries_by_cid_range():
+
+    '''
+    疾病调理 cid
+    '''
+    jibintiaoli_cid_min = 160
+    jibingtiaoli_cid_max = 196
+
+    j_cn = '疾病调理'
+    j_pinyin =get_pinyin(j_cn)
+    # for index in range(jibintiaoli_cid_min,jibingtiaoli_cid_max+1):
+    #     print(index)
+    get_meishijie_categories(jibintiaoli_cid_min,category_pinyin=j_pinyin,category_cn=j_cn)
+    '''
+    功能性调理 cid
+    '''
+    gongnengxingtiaoli_cid_min = 198
+    gongnengxingtiaoli_cid_max = 224
+    g_cn = '功能性调理'
+    g_pinyin = get_pinyin(g_cn)
+    # for index in range(gongnengxingtiaoli_cid_min,gongnengxingtiaoli_cid_max+1):
+    #     print(index)
+    get_meishijie_categories(gongnengxingtiaoli_cid_min,category_pinyin=g_pinyin,category_cn=g_cn)
+    '''
+    脏腑调理 cid
+    '''
+    fuzhangtiaoli_cid_min = 226
+    fuzhangtiaoli_cid_max = 251
+    fuzhangtiaoli_cid_inc = 275
+    f_cn ='腹脏调理'
+    f_pinyin = get_pinyin(f_cn)
+    # for index in range(fuzhangtiaoli_cid_min,fuzhangtiaoli_cid_max+1):
+    #     print(index)
+    #     get_meishijie_categories(index,category_pinyin=f_pinyin,category_cn=f_cn)
+
+    get_meishijie_categories(fuzhangtiaoli_cid_inc,category_pinyin=f_pinyin,category_cn=f_cn)
+    '''
+    人群膳食 cid
+    '''
+    renqunshanshi_cid_min = 253
+    renqunshanshi_cid_max = 267
+    r_cn = '人群膳食'
+    r_pinyin = get_pinyin(r_cn)
+    # for index in range(renqunshanshi_cid_min,renqunshanshi_cid_max+1):
+    #     print(index)
+    get_meishijie_categories(renqunshanshi_cid_min,category_pinyin=r_pinyin,category_cn=r_cn)
+
+
 
 
 
 
 
 if __name__ == '__main__':
+    get_categiries_by_cid_range()
     # get_meishijie_categories()
+        # print(dish_types_st.get(st))
     # get_meishijie_shiliao_shicai_yi()
     # get_meishijie_shiliao_shicai_ji()
-    get_cai_menus()
+    # get_dish_menus()
