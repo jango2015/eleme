@@ -2,11 +2,13 @@ from common import get_response_by_url
 from mongoservice import Insert,get_by_pinyin,get_all
 from bs4 import BeautifulSoup
 from pinyin import PinYin
+import  os
 _cid = 160
 base_url = "http://www.meishij.net/shiliao.php?cid="
 s_pinyin = PinYin()
 s_pinyin.load_word()
 
+filepath =os.path.abspath("./1.json")
 '''获取 理疗分类'''
 def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
     url=base_url+str(cid)
@@ -271,7 +273,7 @@ def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin='')
          img =cai_menu_list.find("img")
          dish_menu.img_url =img["src"]
          remarks = cai_menu_list.select(".c2 li")
-         print(remarks)
+         # print(remarks)
          for remark in remarks :
              # print(remark.string)
              dish_menu.cooking_remark+=remark.string +" \r\n"
@@ -286,12 +288,16 @@ def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin='')
          dish_menu_item = dish_menu.__dict__
          dish_menu_list.append(dish_menu_item)
      print(dish_menu_list)
+     f = open(filepath, 'a')
+     s = str(dish_menu_list)
+     f.write(s)
+     f.close()
      if (len(dish_menu_list) > 0):
         Insert(dish_menu_list,"Mershijie_shiliao_dishmenus")
-     page = page_num+1
-     while (page <=total_page):
-        print(page)
-        get_dish_menus(cid,page_num=page)
+     page_num = page_num+1
+     while (page_num <=total_page):
+        # print(page)
+        get_dish_menus(cid,page_num=page_num)
         break
 
 
