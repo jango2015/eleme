@@ -8,9 +8,9 @@ base_url = "http://www.meishij.net/shiliao.php?cid="
 s_pinyin = PinYin()
 s_pinyin.load_word()
 
-filepath =os.path.abspath("./1.json")
+# filepath =os.path.abspath("./1.json")
 '''获取 理疗分类'''
-def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
+def get_meishijie_categories(cid,category_pinyin='',category_cn=''):
     url=base_url+str(cid)
     html =get_html_by_url(url)
     # print(html)
@@ -33,7 +33,6 @@ def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
 
     # print(len(dds))
     meishijie_shiliao_Categories=[]
-    index =0
     for dd in dds:
         # print(dd)
         s = dd.string
@@ -45,8 +44,7 @@ def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
         # print(l0)
 
         meishijie_shiliao_fenlei = meishijie_shiliao_parant_category()
-        meishijie_shiliao_fenlei.cid =_cid +index
-        index+=1
+        meishijie_shiliao_fenlei.cid =cid
         # if cid == 160 :
         #     meishijie_shiliao_fenlei.category_pinyin="jibingtiaoli"
         #     meishijie_shiliao_fenlei.category_cn='疾病调理'
@@ -70,12 +68,15 @@ def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
     get_meishijie_shiliao_shicai_yi(cid,meishijie_shiliao_fenlei.category_pinyin) #适宜食材
     get_meishijie_shiliao_shicai_ji(cid,meishijie_shiliao_fenlei.category_pinyin) #禁忌食材
     '''获取该分类食材 end'''
+
+    # thread1 = timer(5, 2)
+    # thread1.start()
     for st in dish_types_st:
         # print(st)
         # print(dish_types_st.get(st))
         get_dish_menus(cid,page_num=1,cai_menu_types_st=dish_types_st.get(st),category_pinyin=meishijie_shiliao_fenlei.category_cn)
 
-
+    # thread1.stop()
     # dls = sop.findAll("dl",attrs={'class':"listnav_dl_style1"})
     # for dl in dls:
     #     # print(dl)
@@ -248,7 +249,20 @@ class meishijie_shiliao_dish_menu:
     cooking_remark ='' #烹饪 步骤数 /烹饪 时长
     page_num=0
 
-
+'''线程 定时器'''
+import threading
+import time
+class timer(threading.Thread):
+    def __init__(self,num,interval):
+        threading.Thread.__init__(self)
+        self.thread_num = num
+        self.interval = interval
+        self.thread_stop = False
+    def run(self):
+        while not self.thread_stop:
+            time.sleep(self.interval)
+    def stop(self):
+        self.thread_stop = True
 
 '''获取 菜谱、中医保健、养生妙方'''
 dish_types ={"3":"菜谱","1":"中医保健","2":"养生妙方"}
@@ -257,6 +271,7 @@ def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin='')
      print("CID 为:"+str(cid)+" st 为"+cai_menu_types_st+"  pagenum 为 " +str(page_num) +" category :"+category_pinyin +"-------开始---------------")
      # print(dish_types[cai_menu_types_st])
      # return
+
      url = base_url+str(cid)+"&sortby=update&st="+cai_menu_types_st+"&page="+str(page_num)
      html = get_html_by_url(url)
      soup = BeautifulSoup(html)
@@ -303,10 +318,10 @@ def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin='')
          dish_menu_item = dish_menu.__dict__
          dish_menu_list.append(dish_menu_item)
      # print(dish_menu_list)
-     f = open(filepath, 'a')
-     s = str(dish_menu_list)
-     f.write(s)
-     f.close()
+     # f = open(filepath, 'a')
+     # s = str(dish_menu_list)
+     # f.write(s)
+     # f.close()
      if (len(dish_menu_list) > 0):
         Insert(dish_menu_list,"Mershijie_shiliao_dishmenus")
      page_num = page_num+1
@@ -356,6 +371,7 @@ def get_categiries_by_cid_range():
     脏腑调理 cid
     '''
     fuzhangtiaoli_cid_min = 226
+    # fuzhangtiaoli_cid_min_current = 234
     fuzhangtiaoli_cid_max = 251
     fuzhangtiaoli_cid_inc = 275
     f_cn ='腹脏调理'
