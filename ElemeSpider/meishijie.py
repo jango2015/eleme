@@ -1,5 +1,5 @@
 from common import get_response_by_url
-from mongoservice import Insert,get_by_pinyin,get_all
+from mongoservice import Insert,get_category_by_cid,get_by_pinyin,get_all
 from bs4 import BeautifulSoup
 from pinyin import PinYin
 import  os
@@ -26,8 +26,12 @@ def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
     # p_categories = sop.findAll(attrs={'id':'listnav_ul'})[0]
     # print(p_categories)
 
-    dds = sop.select(".listnav_dl_style1 dd a")
-    print(len(dds))
+    # dds = sop.select(".listnav_dl_style1 dd a")
+    dds = sop.select(".listnav_dl_style1 .current a")
+
+    # print(dds)
+
+    # print(len(dds))
     meishijie_shiliao_Categories=[]
     index =0
     for dd in dds:
@@ -57,6 +61,9 @@ def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
 
         class_meishijie_shiliao_fenlei = meishijie_shiliao_fenlei.__dict__
         meishijie_shiliao_Categories.append(class_meishijie_shiliao_fenlei)
+
+    print(meishijie_shiliao_Categories)
+    # return
     Insert(meishijie_shiliao_Categories,collectionName='Meishijie_shiliao_Categories')
 
     '''获取该分类食材 start '''
@@ -86,6 +93,7 @@ def get_meishijie_categories(cid = _cid,category_pinyin='',category_cn=''):
 '''适宜食材  start'''
 shicai_base_url = "http://www.meishij.net/"
 def get_meishijie_shiliao_shicai_yi(cid = _cid,category_pinyin=""):
+    print("获取cid为"+str(cid)+"的适宜食材,catagory_pinyin:"+category_pinyin+"-----------开始------------")
     url=base_url+str(cid)
     html = get_html_by_url(url)
     soup = BeautifulSoup(html)
@@ -126,12 +134,14 @@ def get_meishijie_shiliao_shicai_yi(cid = _cid,category_pinyin=""):
                         for img in imgs:
                             shiliao_shicai.img_url = img["src"]
                         class_shiliao_shicai = shiliao_shicai.__dict__
-                        print(class_shiliao_shicai)
+                        # print(class_shiliao_shicai)
                         shiliao_shicais.append(class_shiliao_shicai)
                     # img = shicai_li.find_all("img")
                     # print(img)
     if (len(shiliao_shicais)>0):
         Insert(shiliao_shicais,"Meishijie_shiliao_shicais")
+
+    print("获取cid为"+str(cid)+"的适宜食材,catagory_pinyin:"+category_pinyin+"-----------结束------------")
 '''
 适宜食材 end
  '''
@@ -139,6 +149,7 @@ def get_meishijie_shiliao_shicai_yi(cid = _cid,category_pinyin=""):
 
 '''禁忌食材 start'''
 def get_meishijie_shiliao_shicai_ji(cid = _cid,category_pinyin=""):
+    print("获取cid为"+str(cid)+"的禁忌食材,catagory_pinyin:"+category_pinyin+"-----------开始------------")
     url = base_url + str(cid)
     html = get_html_by_url(url)
     soup = BeautifulSoup(html)
@@ -153,7 +164,7 @@ def get_meishijie_shiliao_shicai_ji(cid = _cid,category_pinyin=""):
         shicai_type = soup_shiyi_shicai["class"][0]
         shicai_type_name = soup_shiyi_shicai.string
         remark_spans = soup_shiyi_shicai.next_sibling
-        print(soup_shiyi_shicai.next_sibling.next_sibling)
+        # print(soup_shiyi_shicai.next_sibling.next_sibling)
         ji_shicais = soup_shiyi_shicai.next_sibling.next_sibling.next_sibling
 
         for remark_span in remark_spans:
@@ -163,7 +174,7 @@ def get_meishijie_shiliao_shicai_ji(cid = _cid,category_pinyin=""):
             # for a in shicai_li:
                 # print(a))
             shicai_li_string = str(shicai_li.string).strip()
-            print()
+            # print()
             if shicai_li.string is not None:
                 if shicai_li.string != "\n" and len(shicai_li_string)>0:
                     shiliao_shicai = meishijiie_shiliao_shicai()
@@ -192,11 +203,10 @@ def get_meishijie_shiliao_shicai_ji(cid = _cid,category_pinyin=""):
 
     if (len(shiliao_shicais)>0):
         Insert(shiliao_shicais, "Meishijie_shiliao_shicais")
+    print("获取cid为" + str(cid) + "的禁忌食材,catagory_pinyin:" + category_pinyin + "-----------结束------------")
 '''禁忌食材 end'''
 
-'''
-获取食材 end
-'''
+'''获取食材 end'''
 
 
 '''base'''
@@ -244,6 +254,7 @@ class meishijie_shiliao_dish_menu:
 dish_types ={"3":"菜谱","1":"中医保健","2":"养生妙方"}
 dish_types_st ={"caipu":"3","zhongyibaojian":"1","yangshengmiaofang":"2"}
 def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin=''):
+     print("CID 为:"+str(cid)+" st 为"+cai_menu_types_st+"  pagenum 为 " +str(page_num) +" category :"+category_pinyin +"-------开始---------------")
      # print(dish_types[cai_menu_types_st])
      # return
      url = base_url+str(cid)+"&sortby=update&st="+cai_menu_types_st+"&page="+str(page_num)
@@ -268,7 +279,11 @@ def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin='')
          dish_menu.link_url =cai_menu_list["href"]
          dish_menu.cid = cid
          dish_menu.dish_types_st = cai_menu_types_st
-         dish_menu.dish_type =category_pinyin+dish_types.get(cai_menu_types_st)
+         cn_pre = ''
+         pre_item = get_category_by_cid(cid)
+         if pre_item is not None:
+             cn_pre = pre_item["cnName"]
+         dish_menu.dish_type =cn_pre+dish_types.get(cai_menu_types_st)
          dish_menu.dish_cn = cai_menu_list["title"]
          img =cai_menu_list.find("img")
          dish_menu.img_url =img["src"]
@@ -287,7 +302,7 @@ def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin='')
          dish_menu.page_num = page_num
          dish_menu_item = dish_menu.__dict__
          dish_menu_list.append(dish_menu_item)
-     print(dish_menu_list)
+     # print(dish_menu_list)
      f = open(filepath, 'a')
      s = str(dish_menu_list)
      f.write(s)
@@ -297,9 +312,10 @@ def get_dish_menus(cid=_cid,page_num=1,cai_menu_types_st="3",category_pinyin='')
      page_num = page_num+1
      while (page_num <=total_page):
         # print(page)
-        get_dish_menus(cid,page_num=page_num)
+        get_dish_menus(cid,cai_menu_types_st=cai_menu_types_st, page_num=page_num)
         break
 
+     print("CID 为:"+str(cid)+" st 为"+cai_menu_types_st+"  pagenum 为 " +str(page_num) +" category :"+category_pinyin +"-------结束---------------")
 
 def get_pinyin(str_cn):
     d = s_pinyin.hanzi2pinyin_split(str_cn,split=' ')
@@ -315,22 +331,27 @@ def get_categiries_by_cid_range():
     '''
     jibintiaoli_cid_min = 160
     jibingtiaoli_cid_max = 196
-
+    jibingtiaoli_cid_inc = 159
     j_cn = '疾病调理'
     j_pinyin =get_pinyin(j_cn)
-    # for index in range(jibintiaoli_cid_min,jibingtiaoli_cid_max+1):
+    for index in range(jibintiaoli_cid_min,jibingtiaoli_cid_max+1):
     #     print(index)
-    get_meishijie_categories(jibintiaoli_cid_min,category_pinyin=j_pinyin,category_cn=j_cn)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 开始------------------------------------------------")
+        get_meishijie_categories(index,category_pinyin=j_pinyin,category_cn=j_cn)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 结束------------------------------------------------")
     '''
-    功能性调理 cid
-    '''
+    # 功能性调理 cid
+    # '''
     gongnengxingtiaoli_cid_min = 198
     gongnengxingtiaoli_cid_max = 224
+    # gongnengxingtiaoli_cid_inc = 197
     g_cn = '功能性调理'
     g_pinyin = get_pinyin(g_cn)
-    # for index in range(gongnengxingtiaoli_cid_min,gongnengxingtiaoli_cid_max+1):
-    #     print(index)
-    get_meishijie_categories(gongnengxingtiaoli_cid_min,category_pinyin=g_pinyin,category_cn=g_cn)
+    for index in range(gongnengxingtiaoli_cid_min,gongnengxingtiaoli_cid_max+1):
+        #     print(index)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 开始------------------------------------------------")
+        get_meishijie_categories(index,category_pinyin=g_pinyin,category_cn=g_cn)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 结束------------------------------------------------")
     '''
     脏腑调理 cid
     '''
@@ -339,21 +360,26 @@ def get_categiries_by_cid_range():
     fuzhangtiaoli_cid_inc = 275
     f_cn ='腹脏调理'
     f_pinyin = get_pinyin(f_cn)
-    # for index in range(fuzhangtiaoli_cid_min,fuzhangtiaoli_cid_max+1):
-    #     print(index)
-    #     get_meishijie_categories(index,category_pinyin=f_pinyin,category_cn=f_cn)
-
-    get_meishijie_categories(fuzhangtiaoli_cid_inc,category_pinyin=f_pinyin,category_cn=f_cn)
+    for index in range(fuzhangtiaoli_cid_min,fuzhangtiaoli_cid_max+1):
+        #print(index)
+        #get_meishijie_categories(index,category_pinyin=f_pinyin,category_cn=f_cn)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 开始------------------------------------------------")
+        get_meishijie_categories(index,category_pinyin=f_pinyin,category_cn=f_cn)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 结束------------------------------------------------")
+    get_meishijie_categories(fuzhangtiaoli_cid_inc, category_pinyin=f_pinyin, category_cn=f_cn)
     '''
     人群膳食 cid
     '''
     renqunshanshi_cid_min = 253
     renqunshanshi_cid_max = 267
+    renqunshanshi_cid_inc = 252
     r_cn = '人群膳食'
     r_pinyin = get_pinyin(r_cn)
-    # for index in range(renqunshanshi_cid_min,renqunshanshi_cid_max+1):
-    #     print(index)
-    get_meishijie_categories(renqunshanshi_cid_min,category_pinyin=r_pinyin,category_cn=r_cn)
+    for index in range(renqunshanshi_cid_min,renqunshanshi_cid_max+1):
+        #     print(index)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 开始------------------------------------------------")
+        get_meishijie_categories(index,category_pinyin=r_pinyin,category_cn=r_cn)
+        print("------------------------------获取CID为"+str(index)+"的分类信息 结束------------------------------------------------")
 
 
 

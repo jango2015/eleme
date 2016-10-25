@@ -28,22 +28,9 @@
       <file leaf-file-name="mongoservice.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mongoservice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+            <state relative-caret-position="323">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="eleme_spider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/eleme_spider.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="46" column="16" selection-start-line="43" selection-start-column="6" selection-end-line="46" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#2661#2778#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -51,55 +38,20 @@
       <file leaf-file-name="meishijie.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/meishijie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="360" column="0" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
+            <state relative-caret-position="490">
+              <caret line="368" column="41" selection-start-line="368" selection-start-column="41" selection-end-line="368" selection-end-column="41" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
-                <element signature="e#455#468#0" expanded="false" />
-                <element signature="e#584#604#0" expanded="false" />
-                <element signature="e#904#1995#0" expanded="false" />
-                <element signature="e#2854#2872#1" expanded="false" />
-                <element signature="e#3008#5177#0" expanded="false" />
-                <element signature="e#5287#7703#0" expanded="false" />
-                <element signature="e#7720#7736#1" expanded="false" />
-                <element signature="e#7780#7866#0" expanded="false" />
-                <element signature="e#7927#8018#0" expanded="false" />
-                <element signature="e#8076#8241#0" expanded="false" />
-                <element signature="e#8301#8477#0" expanded="false" />
-                <element signature="e#10866#10957#0" expanded="false" />
-                <element signature="e#11001#12463#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pinyin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pinyin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="word.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/word.data">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#42#0" expanded="true" />
+                <element signature="e#475#488#0" expanded="false" />
+                <element signature="e#604#624#0" expanded="false" />
+                <element signature="e#3005#3023#1" expanded="false" />
+                <element signature="e#3159#5527#0" expanded="false" />
+                <element signature="e#8483#8574#0" expanded="false" />
+                <element signature="e#8632#8797#0" expanded="false" />
+                <element signature="e#8857#9033#0" expanded="false" />
+                <element signature="e#9265#11853#0" expanded="false" />
+                <element signature="e#11883#11974#0" expanded="false" />
+                <marker date="1477365255501" expanded="false" signature="5632:8261" ph="..." />
               </folding>
             </state>
           </provider>
@@ -122,10 +74,10 @@
         <option value="$PROJECT_DIR$/Utils/__init__.py" />
         <option value="$PROJECT_DIR$/Spiders/eleme_spider.py" />
         <option value="$PROJECT_DIR$/Spiders/__init__.py" />
-        <option value="$PROJECT_DIR$/mongoservice.py" />
         <option value="$PROJECT_DIR$/eleme_spider.py" />
         <option value="$PROJECT_DIR$/common.py" />
         <option value="$PROJECT_DIR$/pinyin.py" />
+        <option value="$PROJECT_DIR$/mongoservice.py" />
         <option value="$PROJECT_DIR$/meishijie.py" />
       </list>
     </option>
@@ -167,7 +119,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -189,6 +140,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,6 +283,33 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in ElemeSpider" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in ElemeSpider (1)" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -360,7 +339,7 @@
     <frame x="1358" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2579491" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2599364" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -400,6 +379,25 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/mongoservice.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eleme_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="46" column="16" selection-start-line="43" selection-start-column="6" selection-end-line="46" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#2661#2778#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongoservice.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding />
@@ -423,19 +421,16 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#455#468#0" expanded="false" />
-            <element signature="e#584#604#0" expanded="false" />
-            <element signature="e#904#1995#0" expanded="false" />
-            <element signature="e#2854#2872#1" expanded="false" />
-            <element signature="e#3008#5177#0" expanded="false" />
-            <element signature="e#5287#7703#0" expanded="false" />
-            <element signature="e#7720#7736#1" expanded="false" />
-            <element signature="e#7780#7866#0" expanded="false" />
-            <element signature="e#7927#8018#0" expanded="false" />
-            <element signature="e#8076#8241#0" expanded="false" />
-            <element signature="e#8301#8477#0" expanded="false" />
-            <element signature="e#10866#10957#0" expanded="false" />
-            <element signature="e#11001#12463#0" expanded="false" />
+            <element signature="e#475#488#0" expanded="false" />
+            <element signature="e#604#624#0" expanded="false" />
+            <element signature="e#3005#3023#1" expanded="false" />
+            <element signature="e#3159#5527#0" expanded="false" />
+            <element signature="e#8483#8574#0" expanded="false" />
+            <element signature="e#8632#8797#0" expanded="false" />
+            <element signature="e#8857#9033#0" expanded="false" />
+            <element signature="e#9265#11853#0" expanded="false" />
+            <element signature="e#11883#11974#0" expanded="false" />
+            <marker date="1477365255501" expanded="false" signature="5632:8261" ph="..." />
           </folding>
         </state>
       </provider>
@@ -491,19 +486,16 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#455#468#0" expanded="false" />
-            <element signature="e#584#604#0" expanded="false" />
-            <element signature="e#904#1995#0" expanded="false" />
-            <element signature="e#2854#2872#1" expanded="false" />
-            <element signature="e#3008#5177#0" expanded="false" />
-            <element signature="e#5287#7703#0" expanded="false" />
-            <element signature="e#7720#7736#1" expanded="false" />
-            <element signature="e#7780#7866#0" expanded="false" />
-            <element signature="e#7927#8018#0" expanded="false" />
-            <element signature="e#8076#8241#0" expanded="false" />
-            <element signature="e#8301#8477#0" expanded="false" />
-            <element signature="e#10866#10957#0" expanded="false" />
-            <element signature="e#11001#12463#0" expanded="false" />
+            <element signature="e#475#488#0" expanded="false" />
+            <element signature="e#604#624#0" expanded="false" />
+            <element signature="e#3005#3023#1" expanded="false" />
+            <element signature="e#3159#5527#0" expanded="false" />
+            <element signature="e#8483#8574#0" expanded="false" />
+            <element signature="e#8632#8797#0" expanded="false" />
+            <element signature="e#8857#9033#0" expanded="false" />
+            <element signature="e#9265#11853#0" expanded="false" />
+            <element signature="e#11883#11974#0" expanded="false" />
+            <marker date="1477365255501" expanded="false" signature="5632:8261" ph="..." />
           </folding>
         </state>
       </provider>
@@ -559,19 +551,16 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#455#468#0" expanded="false" />
-            <element signature="e#584#604#0" expanded="false" />
-            <element signature="e#904#1995#0" expanded="false" />
-            <element signature="e#2854#2872#1" expanded="false" />
-            <element signature="e#3008#5177#0" expanded="false" />
-            <element signature="e#5287#7703#0" expanded="false" />
-            <element signature="e#7720#7736#1" expanded="false" />
-            <element signature="e#7780#7866#0" expanded="false" />
-            <element signature="e#7927#8018#0" expanded="false" />
-            <element signature="e#8076#8241#0" expanded="false" />
-            <element signature="e#8301#8477#0" expanded="false" />
-            <element signature="e#10866#10957#0" expanded="false" />
-            <element signature="e#11001#12463#0" expanded="false" />
+            <element signature="e#475#488#0" expanded="false" />
+            <element signature="e#604#624#0" expanded="false" />
+            <element signature="e#3005#3023#1" expanded="false" />
+            <element signature="e#3159#5527#0" expanded="false" />
+            <element signature="e#8483#8574#0" expanded="false" />
+            <element signature="e#8632#8797#0" expanded="false" />
+            <element signature="e#8857#9033#0" expanded="false" />
+            <element signature="e#9265#11853#0" expanded="false" />
+            <element signature="e#11883#11974#0" expanded="false" />
+            <marker date="1477365255501" expanded="false" signature="5632:8261" ph="..." />
           </folding>
         </state>
       </provider>
@@ -639,32 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongoservice.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/word.data">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pinyin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -675,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/eleme_spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="46" column="16" selection-start-line="43" selection-start-column="6" selection-end-line="46" selection-end-column="16" />
+        <state relative-caret-position="1249">
+          <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#2661#2778#0" expanded="false" />
@@ -684,25 +647,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/word.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongoservice.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/meishijie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="360" column="0" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
+        <state relative-caret-position="490">
+          <caret line="368" column="41" selection-start-line="368" selection-start-column="41" selection-end-line="368" selection-end-column="41" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#455#468#0" expanded="false" />
-            <element signature="e#584#604#0" expanded="false" />
-            <element signature="e#904#1995#0" expanded="false" />
-            <element signature="e#2854#2872#1" expanded="false" />
-            <element signature="e#3008#5177#0" expanded="false" />
-            <element signature="e#5287#7703#0" expanded="false" />
-            <element signature="e#7720#7736#1" expanded="false" />
-            <element signature="e#7780#7866#0" expanded="false" />
-            <element signature="e#7927#8018#0" expanded="false" />
-            <element signature="e#8076#8241#0" expanded="false" />
-            <element signature="e#8301#8477#0" expanded="false" />
-            <element signature="e#10866#10957#0" expanded="false" />
-            <element signature="e#11001#12463#0" expanded="false" />
+            <element signature="e#475#488#0" expanded="false" />
+            <element signature="e#604#624#0" expanded="false" />
+            <element signature="e#3005#3023#1" expanded="false" />
+            <element signature="e#3159#5527#0" expanded="false" />
+            <element signature="e#8483#8574#0" expanded="false" />
+            <element signature="e#8632#8797#0" expanded="false" />
+            <element signature="e#8857#9033#0" expanded="false" />
+            <element signature="e#9265#11853#0" expanded="false" />
+            <element signature="e#11883#11974#0" expanded="false" />
+            <marker date="1477365255501" expanded="false" signature="5632:8261" ph="..." />
           </folding>
         </state>
       </provider>
