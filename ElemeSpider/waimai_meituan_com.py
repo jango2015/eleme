@@ -20,3 +20,85 @@
 #                       "poiRegions":[],"sematic_description":"中国农业发展银行(新建区支行)附近48米","cityCode":163}}
 # 手机号码归属地查询
 # http://v.showji.com/Locating/showji.com2016234999234.aspx?m=15850781443&output=json&timestamp=1477386205760
+from common import get_response_by_url
+from bs4 import BeautifulSoup
+from mongoservice import Insert
+restaurantid_range = range(16161,9999999999999+1)  # [2209,2855,2888,4335,5031,5699,6546,8563,8580,10554,11031,11310,11316,12225,12404 ,12625,12869,13040,13058,14261,14911,15596,15806,16160,]
+
+err_decode_ids =[2209,2855,2888,4335,5031,5699,6546,8563,8580,10554,11031,11310,11316,12225,12404 ,12625,12869,13040,13058,14261,14911,15596,15806,16160]
+waimei_meituan_com_restaurant_url_web ="http://waimai.meituan.com/restaurant/"
+waimei_meituan_com_restaurant_url_wap ="http://i.waimai.meituan.com/restaurant/"
+def ping_waimai_meituan_restaurant_by_id(id):
+    print("******"+str(id)+"*****")
+    url_web = waimei_meituan_com_restaurant_url_web+str(id)
+    url_wap = waimei_meituan_com_restaurant_url_wap + str(id)
+    html =get_response_by_url(url_web)
+    # print(html)
+    soup = BeautifulSoup(html)
+    # print(soup)
+    noexits_soup = soup.select(".rest-info")
+    is_restaurant_exist =len(noexits_soup) >0
+    # print(is_restaurant_exist)
+    if (is_restaurant_exist):
+        model = effective_restaurant()
+        model.id = id
+        model.url_web = url_web
+        model.url_wap = url_wap
+        model.waimei_src = 'meituan'
+        model.waimai_src_cn='美团外卖'
+
+        class_model = model.__dict__
+        print(class_model)
+        print("-----------------------------id为:"+str(id)+"-----------------------------------")
+        Insert(class_model,"effective_restaurants")
+
+def ping_restaurant_by_idrange():
+    for index in restaurantid_range:
+        try:
+            ping_waimai_meituan_restaurant_by_id(index)
+        except:
+            err_decode_ids.append(index)
+            print(err_decode_ids)
+            continue
+            # import traceback
+
+
+class effective_restaurant:
+    id =0
+    url_web = ''
+    url_wap =''
+    waimei_src=''
+    waimai_src_cn =''
+
+
+eleme_shop_url_web ="https://www.ele.me/shop/"
+eleme_shop_url_wap ="https://m.ele.me/shop/"
+
+def ping_waimai_eleme_shop_by_id(id):
+    print("******" + str(id) + "*****")
+    url_web = eleme_shop_url_web + str(id)
+    url_wap = eleme_shop_url_wap + str(id)
+    html = get_response_by_url(url_web)
+    # print(html)
+    soup = BeautifulSoup(html)
+    # print(soup)
+    noexits_soup = soup.select(".shopguide-info-wrapper")
+    is_restaurant_exist = len(noexits_soup) > 0
+    # print(is_restaurant_exist)
+    if (is_restaurant_exist):
+        model = effective_restaurant()
+        model.id = id
+        model.url_web = url_web
+        model.url_wap = url_wap
+        model.waimei_src = 'eleme'
+        model.waimai_src_cn = '饿了么'
+
+        class_model = model.__dict__
+        print(class_model)
+        print("-----------------------------id为:" + str(id) + "-----------------------------------")
+        # Insert(class_model, "effective_restaurants")
+
+if __name__ =='__main__':
+    # ping_waimai_meituan_restaurant_by_id(1)
+    # ping_waimai_meituan_restaurant_by_id(210000)
+    ping_restaurant_by_idrange()
