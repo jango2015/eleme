@@ -23,9 +23,11 @@
 from common import get_response_by_url
 from bs4 import BeautifulSoup
 from mongoservice import Insert
-restaurantid_range = range(16161,9999999999999+1)  # [2209,2855,2888,4335,5031,5699,6546,8563,8580,10554,11031,11310,11316,12225,12404 ,12625,12869,13040,13058,14261,14911,15596,15806,16160,]
+import os
+restaurantid_range = range(293883,9999999999999+1)  # [2209,2855,2888,4335,5031,5699,6546,8563,8580,10554,11031,11310,11316,12225,12404 ,12625,12869,13040,13058,14261,14911,15596,15806,16160,]
 
-err_decode_ids =[2209,2855,2888,4335,5031,5699,6546,8563,8580,10554,11031,11310,11316,12225,12404 ,12625,12869,13040,13058,14261,14911,15596,15806,16160]
+err_decode_ids =[]
+filepath =os.path.abspath("err_decode_restaurant_ids.json")
 waimei_meituan_com_restaurant_url_web ="http://waimai.meituan.com/restaurant/"
 waimei_meituan_com_restaurant_url_wap ="http://i.waimai.meituan.com/restaurant/"
 def ping_waimai_meituan_restaurant_by_id(id):
@@ -59,6 +61,11 @@ def ping_restaurant_by_idrange():
         except:
             err_decode_ids.append(index)
             print(err_decode_ids)
+            f = open(filepath, 'a')
+            # s = str(err_decode_ids)
+            s = str(","+str(index))
+            f.write(s)
+            f.close()
             continue
             # import traceback
 
