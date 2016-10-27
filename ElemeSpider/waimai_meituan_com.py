@@ -20,14 +20,15 @@
 #                       "poiRegions":[],"sematic_description":"中国农业发展银行(新建区支行)附近48米","cityCode":163}}
 # 手机号码归属地查询
 # http://v.showji.com/Locating/showji.com2016234999234.aspx?m=15850781443&output=json&timestamp=1477386205760
-from common import get_response_by_url
+from common import get_response_by_url,get_response_by_url_with_headers
 from bs4 import BeautifulSoup
 from mongoservice import Insert
 import os
-restaurantid_range = range(293883,9999999999999+1)  # [2209,2855,2888,4335,5031,5699,6546,8563,8580,10554,11031,11310,11316,12225,12404 ,12625,12869,13040,13058,14261,14911,15596,15806,16160,]
+restaurantid_range = range(4000000,9999999999999+1)  # [2209,2855,2888,4335,5031,5699,6546,8563,8580,10554,11031,11310,11316,12225,12404 ,12625,12869,13040,13058,14261,14911,15596,15806,16160,]
 
 err_decode_ids =[]
-filepath =os.path.abspath("err_decode_restaurant_ids.json")
+'''美团外卖 start'''
+filepath_meituan =os.path.abspath("err_decode_meituan_restaurant_ids.json")
 waimei_meituan_com_restaurant_url_web ="http://waimai.meituan.com/restaurant/"
 waimei_meituan_com_restaurant_url_wap ="http://i.waimai.meituan.com/restaurant/"
 def ping_waimai_meituan_restaurant_by_id(id):
@@ -54,14 +55,120 @@ def ping_waimai_meituan_restaurant_by_id(id):
         print("-----------------------------id为:"+str(id)+"-----------------------------------")
         Insert(class_model,"effective_restaurants")
 
-def ping_restaurant_by_idrange():
+def ping_restaurant_meituan_by_idrange():
     for index in restaurantid_range:
         try:
             ping_waimai_meituan_restaurant_by_id(index)
         except:
             err_decode_ids.append(index)
             print(err_decode_ids)
-            f = open(filepath, 'a')
+            f = open(filepath_meituan, 'a')
+            # s = str(err_decode_ids)
+            s = str(str(index)+",")
+            f.write(s)
+            f.close()
+            continue
+            # import traceback
+
+''' 美团外卖 end'''
+
+class effective_restaurant:
+    id =0
+    url_web = ''
+    url_wap =''
+    url_api =''
+    waimei_src=''
+    waimai_src_cn =''
+
+''' 饿了么 外卖 start'''
+eleme_shop_url_web ="https://www.ele.me/shop/"
+eleme_shop_url_wap ="https://h5.ele.me/shop/#id="
+eleme_shop_url_wap_api ="https://mainsite-restapi.ele.me/shopping/restaurant/"
+filepath_eleme =os.path.abspath("err_decode_eleme_restaurant_ids.json")
+
+def ping_waimai_eleme_shop_by_id(id):
+    print("******" + str(id) + "*****")
+    url_web = eleme_shop_url_web + str(id)
+    url_wap = eleme_shop_url_wap + str(id)
+    url_api = eleme_shop_url_wap_api + str(id)
+    html = get_response_by_url(url_api)
+    print(html)
+    is_restaurant_not_exist = str(html).find("message")>-1
+    print(is_restaurant_not_exist)
+    if (is_restaurant_not_exist ==False ):
+        model = effective_restaurant()
+        model.id = id
+        model.url_web = url_web
+        model.url_wap = url_wap
+        model.url_api = url_api
+        model.waimei_src = 'eleme'
+        model.waimai_src_cn = '饿了么'
+
+        class_model = model.__dict__
+        print(class_model)
+        print("-----------------------------id为:" + str(id) + "-----------------------------------")
+        Insert(class_model, "effective_restaurants")
+        print("*********************************Insert  id为:" + str(id) + "*********************************")
+
+restaurantid_range_eleme = range(1,9999999999999+1)
+
+def ping_restaurant_eleme_by_idrange():
+    for index in restaurantid_range_eleme:
+        try:
+            ping_waimai_eleme_shop_by_id(index)
+        except:
+            err_decode_ids.append(index)
+            print(err_decode_ids)
+            f = open(filepath_eleme, 'a')
+            # s = str(err_decode_ids)
+            s = str(","+str(index))
+            f.write(s)
+            f.close()
+            continue
+            # import traceback
+'''饿了么 外卖 end'''
+
+'''大众点评 外卖 start'''
+
+dianping_waimai_url_web = "http://www.dianping.com/shop/" #17755001
+dianping_waimai_url_wap ="http://m.dianping.com/waimai/mindex#!detail/i=" #21827420
+dianping_waimai_url_wap_api ="http://m.dianping.com/waimai/ajax/newm/detail?shopId="  #21827420
+dianping_waimai_url_wap_api_menus_by_shopid ="http://m.dianping.com/waimai/ajax/newm/detail?shopId=21827420&source=shoplist"
+
+def ping_waimai_dianping_shop_by_id(id):
+    print("******" + str(id) + "*****")
+    url_web = dianping_waimai_url_web + str(id)
+    url_wap = dianping_waimai_url_wap + str(id)
+    url_api = dianping_waimai_url_wap_api + str(id)
+    html = get_response_by_url_with_headers(url_api)
+    print(html)
+    is_restaurant_not_exist = str(html).find("message")>-1
+    print(is_restaurant_not_exist)
+    if (is_restaurant_not_exist ==False ):
+        model = effective_restaurant()
+        model.id = id
+        model.url_web = url_web
+        model.url_wap = url_wap
+        model.url_api = url_api
+        model.waimei_src = 'dianping'
+        model.waimai_src_cn = '大众点评外卖'
+
+        class_model = model.__dict__
+        print(class_model)
+        print("-----------------------------id为:" + str(id) + "-----------------------------------")
+        # Insert(class_model, "effective_restaurants")
+        print("*********************************Insert  id为:" + str(id) + "*********************************")
+
+restaurantid_range_dianping = range(1,9999999999999+1)
+filepath_dianping =os.path.abspath("err_decode_dianping_restaurant_ids.json")
+def ping_restaurant_dianping_by_idrange():
+    for index in restaurantid_range_dianping:
+        try:
+            ping_waimai_dianping_shop_by_id(index)
+        except:
+            err_decode_ids.append(index)
+            print(err_decode_ids)
+            f = open(filepath_dianping, 'a')
             # s = str(err_decode_ids)
             s = str(","+str(index))
             f.write(s)
@@ -69,27 +176,81 @@ def ping_restaurant_by_idrange():
             continue
             # import traceback
 
+'''大众点评外卖 end'''
 
-class effective_restaurant:
-    id =0
-    url_web = ''
-    url_wap =''
-    waimei_src=''
-    waimai_src_cn =''
+''' 百度外卖 start '''
 
+filepath_baidu =os.path.abspath("err_decode_baidu_restaurant_ids.json")
+baidu_waimai_url_web ="https://waimai.baidu.com/waimai/shop/" #1486945120
+baidu_waimai_url_wap = "http://waimai.baidu.com/mobile/waimai?qt=shopmenu&shop_id=" #1486945120
+baidu_waimai_url_wap_api = "http://waimai.baidu.com/waimai/trade/getorderprice?shop_id=" #1486945120
 
-eleme_shop_url_web ="https://www.ele.me/shop/"
-eleme_shop_url_wap ="https://m.ele.me/shop/"
-
-def ping_waimai_eleme_shop_by_id(id):
+def ping_waimai_baidu_shop_by_id(id):
     print("******" + str(id) + "*****")
-    url_web = eleme_shop_url_web + str(id)
-    url_wap = eleme_shop_url_wap + str(id)
-    html = get_response_by_url(url_web)
-    # print(html)
+    url_web = baidu_waimai_url_web + str(id)
+    url_wap = baidu_waimai_url_wap + str(id)
+    url_api = baidu_waimai_url_wap_api + str(id)
+    html = get_response_by_url_with_headers(url_api)
+    print(html)
+    import json
+    jo = json.loads(html)
+    error_no =jo["error_no"]
+    # error_msg =jo["error_msg"]
+    # print(error_msg)
+    is_restaurant_exist =error_no ==0
+    print(is_restaurant_exist)
+    return
+    if (is_restaurant_exist):
+        model = effective_restaurant()
+        model.id = id
+        model.url_web = url_web
+        model.url_wap = url_wap
+        model.url_api = url_api
+        model.waimei_src = 'baidu'
+        model.waimai_src_cn = '百度外卖'
+
+        class_model = model.__dict__
+        print(class_model)
+        print("-----------------------------id为:" + str(id) + "-----------------------------------")
+        # Insert(class_model, "effective_restaurants")
+        print("*********************************Insert  id为:" + str(id) + "*********************************")
+
+
+restaurantid_range_baidu = range(1,9999999999999+1)
+filepath_baidu =os.path.abspath("err_decode_dianping_restaurant_ids.json")
+def ping_restaurant_baidu_by_idrange():
+    for index in restaurantid_range_baidu:
+        try:
+            ping_waimai_dianping_shop_by_id(index)
+        except:
+            err_decode_ids.append(index)
+            print(err_decode_ids)
+            f = open(filepath_baidu, 'a')
+            # s = str(err_decode_ids)
+            s = str("," + str(index))
+            f.write(s)
+            f.close()
+            continue
+            # import traceback
+''' 百度外卖 end'''
+
+'''淘宝外卖 start'''
+taobao_waimai_url_web =""
+taobao_waimai_url_wap="https://h5.m.taobao.com/app/waimai/shop.html?shopId=" #109000473
+taobao_waimai_url_wap_api ='https://api.m.taobao.com/h5/com.taobao.wireless.life.giraffe.queryshopdetail/1.0/?appKey=1a2574478&t=1477554513441&sign=744ed8170f6daf77f122ed416ed9015d&api=com.taobao.wireless.life.giraffe.queryShopDetail&v=1.0&forceAntiCreep=true&AntiCreep=true&type=json&dataType=json&data={"pageSize":200,"storeId":"109000473","pageNo":1,"serviceId":0,"latitude":"31.228764","longitude":"121.527221","la":"31.228764","lo":"121.527221","cityId":"310115","cityid":"310115","cityCode":"310115","citycode":"310115","cityName":"上海市","addressName":"世纪大道(地铁站)","address":"世纪大道(地铁站)","expirationTime":1477554179443}'
+
+def ping_waimai_taobao_shop_by_id(id):
+    print("******" + str(id) + "*****")
+    url_web =taobao_waimai_url_web
+    url_wap = taobao_waimai_url_wap + str(id)
+    html = get_response_by_url(taobao_waimai_url_wap_api)
+    print(html)
     soup = BeautifulSoup(html)
     # print(soup)
-    noexits_soup = soup.select(".shopguide-info-wrapper")
+    noexits_soup = soup.select("body .page .shop-info")
+    print(noexits_soup)
+
+    return
     is_restaurant_exist = len(noexits_soup) > 0
     # print(is_restaurant_exist)
     if (is_restaurant_exist):
@@ -97,15 +258,39 @@ def ping_waimai_eleme_shop_by_id(id):
         model.id = id
         model.url_web = url_web
         model.url_wap = url_wap
-        model.waimei_src = 'eleme'
-        model.waimai_src_cn = '饿了么'
+        model.waimei_src = 'taobao'
+        model.waimai_src_cn = '淘宝外卖'
 
         class_model = model.__dict__
         print(class_model)
         print("-----------------------------id为:" + str(id) + "-----------------------------------")
-        # Insert(class_model, "effective_restaurants")
+        Insert(class_model, "effective_restaurants")
+    return
+
+
+'''淘宝外卖 end'''
+
+'''点我吧 start'''
+dianwoba_waimai_url_wap ="http://m.dianwoba.com/h5/shop/" #17170
+
+
 
 if __name__ =='__main__':
     # ping_waimai_meituan_restaurant_by_id(1)
     # ping_waimai_meituan_restaurant_by_id(210000)
-    ping_restaurant_by_idrange()
+    # ping_restaurant_meituan_by_idrange()
+
+    # ping_waimai_eleme_shop_by_id(1000001)
+    # ping_waimai_eleme_shop_by_id(1)
+    # ping_restaurant_eleme_by_idrange()
+
+    # ping_waimai_dianping_shop_by_id(21)
+    # ping_waimai_dianping_shop_by_id(21827420)
+    # ping_restaurant_dianping_by_idrange()
+
+    # ping_waimai_baidu_shop_by_id(1)
+    # ping_waimai_baidu_shop_by_id(1486945120)
+    # ping_restaurant_baidu_by_idrange()
+
+    ping_waimai_taobao_shop_by_id(109000473)
+    # ping_waimai_taobao_shop_by_id(1)

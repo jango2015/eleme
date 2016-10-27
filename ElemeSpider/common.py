@@ -21,6 +21,19 @@ def get_response_by_url(url):
     content = resp.content.decode('utf-8')
     return content
 
+def get_response_by_url_with_headers(url):
+    headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+               "Accept-Encoding": "gzip, deflate, sdch",
+               "Accept-Language": "zh-CN,zh;q=0.8",
+               "Connection": "keep-alive",
+               "Host":"m.dianping.com",
+               "Upgrade-Insecure-Requests":1,
+               "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
+               }
+    resp = requests.get(url,headers =headers)
+    content = resp.content.decode('utf-8')
+    return content
+
 def get_content(url):
     values = {'wd': 'python',
               'opt-webpage': 'on',
