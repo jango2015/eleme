@@ -1,0 +1,47 @@
+
+
+
+todo:
+
+taobao:
+
+ http://open.taobao.com/docs/doc.htm?spm=a219a.7386797.0.0.dMcIFp&treeId=18&articleId=103173&docType=1#s3
+ 
+ http://open.taobao.com/doc2/docSearch?keyword=%E7%AD%BE%E5%90%8D&searchType=1&treeId=49
+ 
+ 
+ http://restapi.amap.com/v3/place/text?s=rsv3&children=&key=3f3868abdb36336114bde5ab6eecdb68&&offset=50&city=%E4%B8%8A%E6%B5%B7&page=2&language=zh_cn
+ 
+ https://api.m.taobao.com/h5/com.taobao.wireless.life.giraffe.queryshopdetail/1.0/?appKey=12574478&t=1477558983962&sign=efaf23bfd47bfb6a32c73ea519be2786&api=com.taobao.wireless.life.giraffe.queryShopDetail&v=1.0&forceAntiCreep=true&AntiCreep=true&type=jsonp&dataType=jsonp&callback=mtopjsonp1&data=%7B%22pageSize%22%3A200%2C%22storeId%22%3A%22109000473%22%2C%22pageNo%22%3A1%2C%22serviceId%22%3A0%2C%22latitude%22%3A%2231.228764%22%2C%22longitude%22%3A%22121.527221%22%2C%22la%22%3A%2231.228764%22%2C%22lo%22%3A%22121.527221%22%2C%22cityId%22%3A%22310115%22%2C%22cityid%22%3A%22310115%22%2C%22cityCode%22%3A%22310115%22%2C%22citycode%22%3A%22310115%22%2C%22cityName%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22addressName%22%3A%22%E4%B8%96%E7%BA%AA%E5%A4%A7%E9%81%93(%E5%9C%B0%E9%93%81%E7%AB%99)%22%2C%22address%22%3A%22%E4%B8%96%E7%BA%AA%E5%A4%A7%E9%81%93(%E5%9C%B0%E9%93%81%E7%AB%99)%22%2C%22expirationTime%22%3A1477554179443%7D
+ 
+python :
+
+	http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0014021031294178f993c85204e4d1b81ab032070641ce5000
+	
+	http://www.pythontab.com/html/2014/pythonjichu_0121/681.html
+	
+	http://blog.csdn.net/xiaoguaihai/article/details/36016387
+	
+	http://www.cnblogs.com/linjiqin/p/3672285.html
+	
+	http://blog.csdn.net/cskchenshengkun/article/details/45770627
+	
+	http://www.cnblogs.com/fnng/p/3670789.html
+	
+	http://blog.csdn.net/middlekingt/article/details/8593053
+	
+	
+	
+医药:
+
+	http://vdisk.weibo.com/s/Cb1ItMmDIM8dQ
+	
+	http://www.360doc.com/content/16/0519/15/16098628_560462013.shtml
+	
+	http://www.kanyixue.com/ed2k/
+	
+	
+	
+	
+	
+ 

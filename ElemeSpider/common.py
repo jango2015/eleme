@@ -47,6 +47,19 @@ def get_content(url):
     # data = content.decode('gbk')
     # print(data)
     return content
+
+'''
+HTML特殊字符编码对照表 http://www.jb51.net/onlineread/htmlchar.htm
+HTML特殊字符编码  替换  '''
+def html_content_without_special_chars(html_content):
+    special_chars =["&#914;","&#917;","&#920;","&#923;","&#926;","&#929;","&#933;","&#936;","&#946;","&#949;","&#952;","&#955;","&#958;","&#961;","&#964;","&#967;","&#977;","&#8226;","&#8243;","&#8472;","&#8482;","&#8593;","&#8596;","&#8657;","&#8660;","&#8707;","&#8712;","&#8719;","&#8727;","&#8734;","&#8870;","&#8747;","&#8773;","&#8801;","&#8834;","&#8838;","&#8855;","&#8968;","&#8971;","&#9827;","&#160;","&#163;","&#166;","&#169;","&#172;","&#175;","&#178;","&#181","&#62;"]
+    html =str(html_content)
+    for special_char in special_chars:
+        pos = html.find(special_char)
+        if pos >-1:
+            html = html.replace(special_char," ")
+    return  html
+
 def class_to_dict(obj):
     '''把对象(支持单个对象、list、set)转换成字典'''
     is_list = obj.__class__ == [].__class__
