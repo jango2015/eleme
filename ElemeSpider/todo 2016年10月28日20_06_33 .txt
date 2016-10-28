@@ -1,10 +1,11 @@
-
+﻿
 
 
 todo:
 
 taobao:
-
+	
+ -- 淘宝外卖 spider --- api 参数签名--
  http://open.taobao.com/docs/doc.htm?spm=a219a.7386797.0.0.dMcIFp&treeId=18&articleId=103173&docType=1#s3
  
  http://open.taobao.com/doc2/docSearch?keyword=%E7%AD%BE%E5%90%8D&searchType=1&treeId=49
@@ -15,6 +16,7 @@ taobao:
  https://api.m.taobao.com/h5/com.taobao.wireless.life.giraffe.queryshopdetail/1.0/?appKey=12574478&t=1477558983962&sign=efaf23bfd47bfb6a32c73ea519be2786&api=com.taobao.wireless.life.giraffe.queryShopDetail&v=1.0&forceAntiCreep=true&AntiCreep=true&type=jsonp&dataType=jsonp&callback=mtopjsonp1&data=%7B%22pageSize%22%3A200%2C%22storeId%22%3A%22109000473%22%2C%22pageNo%22%3A1%2C%22serviceId%22%3A0%2C%22latitude%22%3A%2231.228764%22%2C%22longitude%22%3A%22121.527221%22%2C%22la%22%3A%2231.228764%22%2C%22lo%22%3A%22121.527221%22%2C%22cityId%22%3A%22310115%22%2C%22cityid%22%3A%22310115%22%2C%22cityCode%22%3A%22310115%22%2C%22citycode%22%3A%22310115%22%2C%22cityName%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%22%2C%22addressName%22%3A%22%E4%B8%96%E7%BA%AA%E5%A4%A7%E9%81%93(%E5%9C%B0%E9%93%81%E7%AB%99)%22%2C%22address%22%3A%22%E4%B8%96%E7%BA%AA%E5%A4%A7%E9%81%93(%E5%9C%B0%E9%93%81%E7%AB%99)%22%2C%22expirationTime%22%3A1477554179443%7D
  
 python :
+
 
 	http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0014021031294178f993c85204e4d1b81ab032070641ce5000
 	
@@ -31,8 +33,14 @@ python :
 	http://blog.csdn.net/middlekingt/article/details/8593053
 	
 	
+	美食节——菜品明细 spider
+	http://www.meishij.net/zuofa/pipatangshui_3.html
+
+
 	
 医药:
+	
+	---医药 --spider
 
 	http://vdisk.weibo.com/s/Cb1ItMmDIM8dQ
 	

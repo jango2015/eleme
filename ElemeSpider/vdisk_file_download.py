@@ -9,13 +9,13 @@ save_file_dir =os.path.abspath("./v_disk_download_dirs/")
 file_save_path =""
 if os.path.exists(save_file_dir) == False:
     os.makedirs(save_file_dir)
-current_save_file_dir= os.path.abspath("./v_disk_download_dirs/")
+current_save_file_dir = os.path.abspath("./v_disk_download_dirs/")
 
 vdisk_dirs_path = os.path.abspath("./vdisk_dirs.json")
 vdisk_files_path = os.path.abspath("./vdisk_files.json")
 vdisk_file_download_log_path = os.path.abspath("./vdisk_file_download_logs.json")
-
-file_formats =".pdf,.txt,.rar,.doc,.xls,.docx,.xlsx,.ppt,.pptx,.tar,.kdh,.jpg,.ace,.mp3,.av,.mpg,.mp4,.mv,.mov,.mht,.flv,.exe,.zip,.caj,.uvz,.chm,.djvu,.rm,.7z,"
+vdisk_file_download_log_error_path=os.path.abspath("./vdisk_file_download_error_logs.json")
+file_formats =".pdf,.txt,,.doc,.xls,.docx,.xlsx,.ppt,.pptx,.tar,.kdh,.jpg,.ace,.mp3,.av,.mpg,.mp4,.mv,.mov,.mht,.flv,.exe,.zip,.caj,.uvz,.chm,.djvu,.rm,.7z,"
 vdisk_all_files =[]
 def get_vdisk_files_by_code(code = vdisk_files_code,current_dir_path =save_file_dir):
     url = vdisk_files_url +code
@@ -46,21 +46,31 @@ def get_vdisk_files_by_code(code = vdisk_files_code,current_dir_path =save_file_
             vdisk_files.append(class_vdisk_file)
             vdisk_all_files.append(class_vdisk_file.copy())
 
-            download_file_url = get_download_url_by_url(c_disk_file.url)
-            current_download_url = c_disk_file.url
-            st_logs = "___________________download file  url:"+current_download_url+"  开始下载 "+c_disk_file.title+"___________________________"
-            print(st_logs)
-            f = open(vdisk_file_download_log_path, "a")
-            f.write(st_logs)
-            f.close()
-            import requests
-            r = requests.get(download_file_url)
-            with open(str(current_dir_path)+"/"+c_disk_file.title,"wb") as code:
-                code.write(r.content)
-            st_logs="****************************download file  url:"+current_download_url+" ********"+c_disk_file.title+"下载成功******************************************" +"\r\t"
-            f  = open(vdisk_file_download_log_path,"a")
-            f.write(st_logs)
-            f.close()
+            if (code !=vdisk_files_code):
+                current_download_url = c_disk_file.url
+                try:
+                    download_file_current_url =str(current_dir_path)+"/"+c_disk_file.title
+                    if os.path.exists(download_file_current_url) ==False:
+                        download_file_url = get_download_url_by_url(current_download_url)
+                        st_logs = "___________________download file  url:"+current_download_url+"  开始下载 "+c_disk_file.title+"___________________________"
+                        print(st_logs)
+                        f = open(vdisk_file_download_log_path, "a")
+                        f.write(st_logs)
+                        f.close()
+                        import requests
+                        r = requests.get(download_file_url)
+                        with open(download_file_current_url,"wb") as dcode:
+                            dcode.write(r.content)
+                        st_logs="****************************download file  url:"+current_download_url+" ********"+c_disk_file.title+"下载成功******************************************" +"\r\t"
+                        f  = open(vdisk_file_download_log_path,"a")
+                        f.write(st_logs)
+                        f.close()
+                except :
+                    error = "___________________download file  url:"+current_download_url+"  下载  出现错误"+c_disk_file.title+"___________________________"
+                    f = open(vdisk_file_download_log_error_path,"a")
+                    f.write(error)
+                    f.close()
+                    continue
         else:
             c_disk_dir = vdisk_dir()
             c_disk_dir.name = f_list.string
@@ -94,7 +104,7 @@ def get_vdisk_files_by_code(code = vdisk_files_code,current_dir_path =save_file_
             # print(v_disk_dir)
             print(v_disk_dir["name"])
             # return
-            current_save_file_dir = current_save_file_dir +"/"+ str(v_disk_dir["name"])
+            current_save_file_dir = current_dir_path +"/"+ str(v_disk_dir["name"])
             if os.path.exists(current_save_file_dir) ==False:
                 os.makedirs(current_save_file_dir)
             print("***********************get code :"+v_disk_dir['code']+" *******************************")
@@ -106,7 +116,7 @@ def get_download_url_by_url(url):
     # print(html)
     soup = BeautifulSoup(html)
     scripts = soup.select("script")
-    print(len(scripts))
+    # print(len(scripts))
     # print(type(scripts))
     # print(scripts[8])
     vs_sc_data = str(scripts[8])
@@ -120,7 +130,7 @@ def get_download_url_by_url(url):
     # print(file_download_info)
     print(jo)
     download_list_url = jo["download_list"]
-    print(download_list_url)
+    # print(download_list_url)
     print(download_list_url[0])
     return  download_list_url[0]
 

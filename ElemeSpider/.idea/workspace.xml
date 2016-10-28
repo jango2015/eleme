@@ -72,15 +72,14 @@
       <file leaf-file-name="vdisk_file_download.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vdisk_file_download.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+            <state relative-caret-position="304">
+              <caret line="16" column="79" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="79" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <element signature="e#3409#3433#0" expanded="false" />
-                <element signature="e#5260#5307#0" expanded="false" />
-                <element signature="e#5331#5365#0" expanded="false" />
-                <marker date="1477643596996" expanded="true" signature="168:181" ph="..." />
-                <marker date="1477643596996" expanded="false" signature="4364:5235" ph="..." />
+                <element signature="e#4225#4249#0" expanded="false" />
+                <element signature="e#6075#6122#0" expanded="false" />
+                <element signature="e#6146#6180#0" expanded="false" />
+                <marker date="1477649754182" expanded="true" signature="168:181" ph="..." />
               </folding>
             </state>
           </provider>
@@ -898,15 +897,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vdisk_file_download.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        <state relative-caret-position="304">
+          <caret line="16" column="79" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="79" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#3409#3433#0" expanded="false" />
-            <element signature="e#5260#5307#0" expanded="false" />
-            <element signature="e#5331#5365#0" expanded="false" />
-            <marker date="1477643596996" expanded="true" signature="168:181" ph="..." />
-            <marker date="1477643596996" expanded="false" signature="4364:5235" ph="..." />
+            <element signature="e#4225#4249#0" expanded="false" />
+            <element signature="e#6075#6122#0" expanded="false" />
+            <element signature="e#6146#6180#0" expanded="false" />
+            <marker date="1477649754182" expanded="true" signature="168:181" ph="..." />
           </folding>
         </state>
       </provider>
