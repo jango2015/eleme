@@ -50,19 +50,17 @@
       <file leaf-file-name="waimai_meituan_com.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/waimai_meituan_com.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
-              <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+            <state relative-caret-position="575">
+              <caret line="237" column="43" selection-start-line="237" selection-start-column="43" selection-end-line="237" selection-end-column="43" />
               <folding>
                 <element signature="e#3575#3681#0" expanded="true" />
                 <element signature="e#5195#5602#0" expanded="false" />
                 <element signature="e#5963#6057#0" expanded="false" />
                 <element signature="e#6370#7341#0" expanded="false" />
                 <element signature="e#7440#7843#0" expanded="false" />
-                <element signature="e#8302#9309#0" expanded="false" />
                 <element signature="e#9491#9903#0" expanded="false" />
                 <element signature="e#10332#11425#0" expanded="false" />
-                <element signature="e#11599#12007#0" expanded="false" />
-                <element signature="e#12824#13746#0" expanded="false" />
+                <element signature="e#12830#13752#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -492,7 +490,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="1358" y="-8" width="2576" height="1416" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0918124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -561,11 +559,9 @@
             <element signature="e#5963#6057#0" expanded="false" />
             <element signature="e#6370#7341#0" expanded="false" />
             <element signature="e#7440#7843#0" expanded="false" />
-            <element signature="e#8302#9309#0" expanded="false" />
             <element signature="e#9491#9903#0" expanded="false" />
             <element signature="e#10332#11425#0" expanded="false" />
-            <element signature="e#11599#12007#0" expanded="false" />
-            <element signature="e#12824#13746#0" expanded="false" />
+            <element signature="e#12830#13752#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -613,11 +609,9 @@
             <element signature="e#5963#6057#0" expanded="false" />
             <element signature="e#6370#7341#0" expanded="false" />
             <element signature="e#7440#7843#0" expanded="false" />
-            <element signature="e#8302#9309#0" expanded="false" />
             <element signature="e#9491#9903#0" expanded="false" />
             <element signature="e#10332#11425#0" expanded="false" />
-            <element signature="e#11599#12007#0" expanded="false" />
-            <element signature="e#12824#13746#0" expanded="false" />
+            <element signature="e#12830#13752#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -900,19 +894,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/waimai_meituan_com.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+        <state relative-caret-position="575">
+          <caret line="237" column="43" selection-start-line="237" selection-start-column="43" selection-end-line="237" selection-end-column="43" />
           <folding>
             <element signature="e#3575#3681#0" expanded="true" />
             <element signature="e#5195#5602#0" expanded="false" />
             <element signature="e#5963#6057#0" expanded="false" />
             <element signature="e#6370#7341#0" expanded="false" />
             <element signature="e#7440#7843#0" expanded="false" />
-            <element signature="e#8302#9309#0" expanded="false" />
             <element signature="e#9491#9903#0" expanded="false" />
             <element signature="e#10332#11425#0" expanded="false" />
-            <element signature="e#11599#12007#0" expanded="false" />
-            <element signature="e#12824#13746#0" expanded="false" />
+            <element signature="e#12830#13752#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -235,12 +235,12 @@ def ping_waimai_baidu_shop_by_id(id):
         print("*********************************Insert  id为:" + str(id) + "*********************************")
 
 
-restaurantid_range_baidu = range(1,9999999999999+1)
+restaurantid_range_baidu = range(1000000000,9999999999999+1)
 filepath_baidu =os.path.abspath("err_decode_dianping_restaurant_ids.json")
 def ping_restaurant_baidu_by_idrange():
     for index in restaurantid_range_baidu:
         try:
-            ping_waimai_dianping_shop_by_id(index)
+            ping_waimai_baidu_shop_by_id(index)
         except:
             err_decode_ids.append(index)
             print(err_decode_ids)
@@ -311,7 +311,7 @@ if __name__ =='__main__':
 
     # ping_waimai_baidu_shop_by_id(1)
     # ping_waimai_baidu_shop_by_id(1486945120)
-    # ping_restaurant_baidu_by_idrange()
+    ping_restaurant_baidu_by_idrange()
 
     # ping_waimai_taobao_shop_by_id(109000473)
     # ping_waimai_taobao_shop_by_id(1)
