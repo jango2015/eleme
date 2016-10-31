@@ -20,7 +20,7 @@
 #                       "poiRegions":[],"sematic_description":"中国农业发展银行(新建区支行)附近48米","cityCode":163}}
 # 手机号码归属地查询
 # http://v.showji.com/Locating/showji.com2016234999234.aspx?m=15850781443&output=json&timestamp=1477386205760
-from common import get_response_by_url,get_response_by_url_with_headers
+from common import get_response_by_url,get_response_by_url_with_headers,html_content_without_special_chars
 from bs4 import BeautifulSoup
 from mongoservice import Insert
 import os
@@ -37,6 +37,7 @@ def ping_waimai_meituan_restaurant_by_id(id):
     url_wap = waimei_meituan_com_restaurant_url_wap + str(id)
     html =get_response_by_url(url_web)
     # print(html)
+    html = html_content_without_special_chars(html)
     soup = BeautifulSoup(html)
     # print(soup)
     noexits_soup = soup.select(".rest-info")
@@ -70,6 +71,18 @@ def ping_restaurant_meituan_by_idrange():
             continue
             # import traceback
 
+def ping_restaurant_meituan_by_err_decode():
+    f = open(filepath_meituan,"r")
+    st = f.read()
+    # print(st+"\r\t")
+    ids = st.split(",")
+    print(ids)
+    for _id in ids:
+        m_id =_id.strip(' ')
+        i_id = int(m_id)
+        # ping_waimai_meituan_restaurant_by_id(i_id)
+        # print(m_id)
+
 ''' 美团外卖 end'''
 
 class effective_restaurant:
@@ -92,6 +105,7 @@ def ping_waimai_eleme_shop_by_id(id):
     url_wap = eleme_shop_url_wap + str(id)
     url_api = eleme_shop_url_wap_api + str(id)
     html = get_response_by_url(url_api)
+    html = html_content_without_special_chars(html)
     print(html)
     is_restaurant_not_exist = str(html).find("message")>-1
     print(is_restaurant_not_exist)
@@ -142,6 +156,7 @@ def ping_waimai_dianping_shop_by_id(id):
     url_api = dianping_waimai_url_wap_api + str(id)
     html = get_response_by_url_with_headers(url_api)
     print(html)
+    html = html_content_without_special_chars(html)
     is_restaurant_not_exist = str(html).find("message")>-1
     print(is_restaurant_not_exist)
     if (is_restaurant_not_exist ==False ):
@@ -176,6 +191,9 @@ def ping_restaurant_dianping_by_idrange():
             continue
             # import traceback
 
+
+
+
 '''大众点评外卖 end'''
 
 ''' 百度外卖 start '''
@@ -191,6 +209,7 @@ def ping_waimai_baidu_shop_by_id(id):
     url_wap = baidu_waimai_url_wap + str(id)
     url_api = baidu_waimai_url_wap_api + str(id)
     html = get_response_by_url_with_headers(url_api)
+    html = html_content_without_special_chars(html)
     print(html)
     import json
     jo = json.loads(html)
@@ -245,6 +264,7 @@ def ping_waimai_taobao_shop_by_id(id):
     url_wap = taobao_waimai_url_wap + str(id)
     html = get_response_by_url(taobao_waimai_url_wap_api)
     print(html)
+    html = html_content_without_special_chars(html)
     soup = BeautifulSoup(html)
     # print(soup)
     noexits_soup = soup.select("body .page .shop-info")
@@ -279,6 +299,7 @@ if __name__ =='__main__':
     # ping_waimai_meituan_restaurant_by_id(1)
     # ping_waimai_meituan_restaurant_by_id(210000)
     # ping_restaurant_meituan_by_idrange()
+    # ping_restaurant_meituan_by_err_decode()
 
     # ping_waimai_eleme_shop_by_id(1000001)
     # ping_waimai_eleme_shop_by_id(1)
@@ -292,5 +313,5 @@ if __name__ =='__main__':
     # ping_waimai_baidu_shop_by_id(1486945120)
     # ping_restaurant_baidu_by_idrange()
 
-    ping_waimai_taobao_shop_by_id(109000473)
+    # ping_waimai_taobao_shop_by_id(109000473)
     # ping_waimai_taobao_shop_by_id(1)

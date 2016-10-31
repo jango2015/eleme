@@ -47,36 +47,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waimai_meituan_com.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="waimai_meituan_com.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/waimai_meituan_com.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2109">
-              <caret line="247" column="30" selection-start-line="247" selection-start-column="30" selection-end-line="247" selection-end-column="30" />
+            <state relative-caret-position="841">
+              <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
               <folding>
-                <element signature="e#3575#3646#0" expanded="true" />
-                <element signature="e#5108#5515#0" expanded="false" />
-                <element signature="e#5566#5660#0" expanded="false" />
-                <element signature="e#5973#6892#0" expanded="false" />
-                <element signature="e#6991#7394#0" expanded="false" />
-                <element signature="e#7853#8808#0" expanded="false" />
-                <element signature="e#8251#8808#0" expanded="false" />
-                <element signature="e#8990#9402#0" expanded="false" />
-                <element signature="e#9828#10869#0" expanded="false" />
-                <element signature="e#10317#10869#0" expanded="false" />
-                <element signature="e#11043#11451#0" expanded="false" />
+                <element signature="e#3575#3681#0" expanded="true" />
+                <element signature="e#5195#5602#0" expanded="false" />
+                <element signature="e#5963#6057#0" expanded="false" />
+                <element signature="e#6370#7341#0" expanded="false" />
+                <element signature="e#7440#7843#0" expanded="false" />
+                <element signature="e#8302#9309#0" expanded="false" />
+                <element signature="e#9491#9903#0" expanded="false" />
+                <element signature="e#10332#11425#0" expanded="false" />
+                <element signature="e#11599#12007#0" expanded="false" />
+                <element signature="e#12824#13746#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vdisk_file_download.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="vdisk_file_download.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vdisk_file_download.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="79" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="79" />
+            <state relative-caret-position="418">
+              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="23" selection-end-column="51" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+                <element signature="e#1308#4140#0" expanded="false" />
+                <element signature="e#2061#3610#0" expanded="false" />
+                <element signature="e#2141#3271#0" expanded="false" />
+                <element signature="e#3637#4135#0" expanded="false" />
                 <element signature="e#4225#4249#0" expanded="false" />
+                <element signature="e#4588#5140#0" expanded="false" />
+                <element signature="e#5180#6050#0" expanded="false" />
                 <element signature="e#6075#6122#0" expanded="false" />
                 <element signature="e#6146#6180#0" expanded="false" />
                 <marker date="1477649754182" expanded="true" signature="168:181" ph="..." />
@@ -118,9 +123,9 @@
         <option value="$PROJECT_DIR$/city/waimai_meituan_com.py" />
         <option value="$PROJECT_DIR$/meishijie.py" />
         <option value="$PROJECT_DIR$/area_convert.py" />
-        <option value="$PROJECT_DIR$/waimai_meituan_com.py" />
         <option value="$PROJECT_DIR$/common.py" />
         <option value="$PROJECT_DIR$/vdisk_file_download.py" />
+        <option value="$PROJECT_DIR$/waimai_meituan_com.py" />
       </list>
     </option>
   </component>
@@ -523,7 +528,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -551,17 +556,16 @@
         <state relative-caret-position="2280">
           <caret line="250" column="23" selection-start-line="250" selection-start-column="23" selection-end-line="250" selection-end-column="23" />
           <folding>
-            <element signature="e#3575#3646#0" expanded="true" />
-            <element signature="e#5108#5515#0" expanded="false" />
-            <element signature="e#5566#5660#0" expanded="false" />
-            <element signature="e#5973#6892#0" expanded="false" />
-            <element signature="e#6991#7394#0" expanded="false" />
-            <element signature="e#7853#8808#0" expanded="false" />
-            <element signature="e#8251#8808#0" expanded="false" />
-            <element signature="e#8990#9402#0" expanded="false" />
-            <element signature="e#9828#10869#0" expanded="false" />
-            <element signature="e#10317#10869#0" expanded="false" />
-            <element signature="e#11043#11451#0" expanded="false" />
+            <element signature="e#3575#3681#0" expanded="true" />
+            <element signature="e#5195#5602#0" expanded="false" />
+            <element signature="e#5963#6057#0" expanded="false" />
+            <element signature="e#6370#7341#0" expanded="false" />
+            <element signature="e#7440#7843#0" expanded="false" />
+            <element signature="e#8302#9309#0" expanded="false" />
+            <element signature="e#9491#9903#0" expanded="false" />
+            <element signature="e#10332#11425#0" expanded="false" />
+            <element signature="e#11599#12007#0" expanded="false" />
+            <element signature="e#12824#13746#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -604,17 +608,16 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3575#3646#0" expanded="true" />
-            <element signature="e#5108#5515#0" expanded="false" />
-            <element signature="e#5566#5660#0" expanded="false" />
-            <element signature="e#5973#6892#0" expanded="false" />
-            <element signature="e#6991#7394#0" expanded="false" />
-            <element signature="e#7853#8808#0" expanded="false" />
-            <element signature="e#8251#8808#0" expanded="false" />
-            <element signature="e#8990#9402#0" expanded="false" />
-            <element signature="e#9828#10869#0" expanded="false" />
-            <element signature="e#10317#10869#0" expanded="false" />
-            <element signature="e#11043#11451#0" expanded="false" />
+            <element signature="e#3575#3681#0" expanded="true" />
+            <element signature="e#5195#5602#0" expanded="false" />
+            <element signature="e#5963#6057#0" expanded="false" />
+            <element signature="e#6370#7341#0" expanded="false" />
+            <element signature="e#7440#7843#0" expanded="false" />
+            <element signature="e#8302#9309#0" expanded="false" />
+            <element signature="e#9491#9903#0" expanded="false" />
+            <element signature="e#10332#11425#0" expanded="false" />
+            <element signature="e#11599#12007#0" expanded="false" />
+            <element signature="e#12824#13746#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -857,26 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/waimai_meituan_com.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2109">
-          <caret line="247" column="30" selection-start-line="247" selection-start-column="30" selection-end-line="247" selection-end-column="30" />
-          <folding>
-            <element signature="e#3575#3646#0" expanded="true" />
-            <element signature="e#5108#5515#0" expanded="false" />
-            <element signature="e#5566#5660#0" expanded="false" />
-            <element signature="e#5973#6892#0" expanded="false" />
-            <element signature="e#6991#7394#0" expanded="false" />
-            <element signature="e#7853#8808#0" expanded="false" />
-            <element signature="e#8251#8808#0" expanded="false" />
-            <element signature="e#8990#9402#0" expanded="false" />
-            <element signature="e#9828#10869#0" expanded="false" />
-            <element signature="e#10317#10869#0" expanded="false" />
-            <element signature="e#11043#11451#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/eleme_spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
@@ -897,14 +880,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vdisk_file_download.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="79" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="79" />
+        <state relative-caret-position="418">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="23" selection-end-column="51" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#1308#4140#0" expanded="false" />
+            <element signature="e#2061#3610#0" expanded="false" />
+            <element signature="e#2141#3271#0" expanded="false" />
+            <element signature="e#3637#4135#0" expanded="false" />
             <element signature="e#4225#4249#0" expanded="false" />
+            <element signature="e#4588#5140#0" expanded="false" />
+            <element signature="e#5180#6050#0" expanded="false" />
             <element signature="e#6075#6122#0" expanded="false" />
             <element signature="e#6146#6180#0" expanded="false" />
             <marker date="1477649754182" expanded="true" signature="168:181" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/waimai_meituan_com.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+          <folding>
+            <element signature="e#3575#3681#0" expanded="true" />
+            <element signature="e#5195#5602#0" expanded="false" />
+            <element signature="e#5963#6057#0" expanded="false" />
+            <element signature="e#6370#7341#0" expanded="false" />
+            <element signature="e#7440#7843#0" expanded="false" />
+            <element signature="e#8302#9309#0" expanded="false" />
+            <element signature="e#9491#9903#0" expanded="false" />
+            <element signature="e#10332#11425#0" expanded="false" />
+            <element signature="e#11599#12007#0" expanded="false" />
+            <element signature="e#12824#13746#0" expanded="false" />
           </folding>
         </state>
       </provider>
