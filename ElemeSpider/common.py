@@ -46,6 +46,10 @@ def post_response_by_url_with_headers(url):
     resp = requests.post(url,headers =headers)
     content = resp.content.decode('utf-8')
     return content
+def get_response_by_url_with_headers(url,headers):
+    resp = requests.post(url,headers =headers)
+    content = resp.content.decode('utf-8')
+    return content
 
 def get_content(url):
     values = {'wd': 'python',
